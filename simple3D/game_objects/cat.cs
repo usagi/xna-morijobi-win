@@ -35,8 +35,7 @@ namespace xna_morijobi_win.simple3D.game_objects
             position_.Z = (float)Math.Cos(t * 0.5);
             position_ *= 20.0f;
 
-            if ((int)t % 100 == 0)
-                Game.Components.Add(new cat(Game));
+            (camera as polar_camera).target = position;
         }
 
         public override void Draw(GameTime gameTime)

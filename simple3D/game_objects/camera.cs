@@ -12,7 +12,8 @@ namespace xna_morijobi_win.simple3D.game_objects
         public virtual Vector3 position { get { return position_; } }
         public virtual Vector3 target { get { return target_; } }
         public virtual Vector3 up { get { return up_; } }
-
+        public virtual Vector3 forward { get { return Vector3.Normalize(target - position); } }
+        
         public virtual Matrix view { get { return Matrix.CreateLookAt(position_, target_, up_); } }
         public virtual Matrix projection { get { return Matrix.CreatePerspectiveFieldOfView((float)Math.PI / 4, Game.GraphicsDevice.Viewport.AspectRatio, 1.0f, 1000.0f); } }
 

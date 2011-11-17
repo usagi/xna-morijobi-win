@@ -40,7 +40,10 @@ namespace xna_morijobi_win.simple3D
 
         protected void generate_components()
         {
-            Components.Add(camera = new game_objects.camera(this));
+            Components.Add(camera =
+                //new game_objects.camera(this)
+                new game_objects.polar_camera(this)
+            );
             Components.Add(new game_objects.axes(this));
             Components.Add(new game_objects.cat(this));
         }
