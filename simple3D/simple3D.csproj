@@ -65,7 +65,6 @@
     <Compile Include="game_objects\cat.cs" />
     <Compile Include="game_objects\camera.cs" />
     <Compile Include="game_objects\axes.cs" />
-    <Compile Include="game_objects\camera_related_billboard.cs" />
     <Compile Include="game_objects\wankuma.cs" />
     <Compile Include="game_objects\polar_camera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
