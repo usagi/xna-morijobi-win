@@ -43,6 +43,23 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CpuSkinningDataTypes\CpuSkinningDataTypes %28Windows%29.csproj">
+      <Project>{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}</Project>
+      <Name>CpuSkinningDataTypes %28Windows%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CpuSkinningPipelineExtensions\CpuSkinningPipelineExtensions.csproj">
+      <Project>{C74E3173-73C2-4357-87E2-E433D279A948}</Project>
+      <Name>CpuSkinningPipelineExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="n175Anim.x">
+      <Name>n175Anim</Name>
+      <Importer>XImporter</Importer>
+      <Processor>CpuSkinnedModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

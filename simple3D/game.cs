@@ -47,6 +47,7 @@ namespace xna_morijobi_win.simple3D
             Components.Add(new game_objects.axes(this));
             Components.Add(new game_objects.cat(this));
             Components.Add(new game_objects.wankuma(this));
+            Components.Add(new game_objects.n175Anim(this));
         }
 
         protected override void Update(GameTime gameTime)

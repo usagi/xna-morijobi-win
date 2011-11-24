@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xna-morijobi-win", "xna-morijobi-win\xna-morijobi-win\xna-morijobi-win.csproj", "{75359C3C-DA5D-496F-AAE6-C8D4B3076483}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "xna-morijobi-winContent", "xna-morijobi-win\xna-morijobi-winContent\xna-morijobi-winContent.contentproj", "{48A06FBF-90DA-4446-AC23-9E0230C2E331}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xna-morijobi-winContent", "xna-morijobi-win\xna-morijobi-winContent\xna-morijobi-winContent.contentproj", "{48A06FBF-90DA-4446-AC23-9E0230C2E331}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simple3D", "simple3D\simple3D.csproj", "{4A189610-2B9F-45F1-A929-1F89EF88CA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuSkinningDataTypes (Windows)", "CpuSkinningDataTypes\CpuSkinningDataTypes (Windows).csproj", "{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuSkinningPipelineExtensions", "CpuSkinningPipelineExtensions\CpuSkinningPipelineExtensions.csproj", "{C74E3173-73C2-4357-87E2-E433D279A948}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{4A189610-2B9F-45F1-A929-1F89EF88CA09}.Debug|x86.Build.0 = Debug|x86
 		{4A189610-2B9F-45F1-A929-1F89EF88CA09}.Release|x86.ActiveCfg = Release|x86
 		{4A189610-2B9F-45F1-A929-1F89EF88CA09}.Release|x86.Build.0 = Release|x86
+		{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}.Debug|x86.ActiveCfg = Debug|x86
+		{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}.Debug|x86.Build.0 = Debug|x86
+		{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}.Release|x86.ActiveCfg = Release|x86
+		{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}.Release|x86.Build.0 = Release|x86
+		{C74E3173-73C2-4357-87E2-E433D279A948}.Debug|x86.ActiveCfg = Debug|x86
+		{C74E3173-73C2-4357-87E2-E433D279A948}.Debug|x86.Build.0 = Debug|x86
+		{C74E3173-73C2-4357-87E2-E433D279A948}.Release|x86.ActiveCfg = Debug|x86
+		{C74E3173-73C2-4357-87E2-E433D279A948}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
