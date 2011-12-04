@@ -97,17 +97,17 @@
     <Compile Include="game_objects\star.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\input\input.csproj">
+    <ProjectReference Include="..\input\engine.input.csproj">
       <Project>{D599407F-A54D-477A-A4D0-284F8F5A40DA}</Project>
-      <Name>input</Name>
+      <Name>engine.input</Name>
     </ProjectReference>
-    <ProjectReference Include="..\scene\scene.csproj">
+    <ProjectReference Include="..\scene\engine.scene.csproj">
       <Project>{82B196C5-0678-4131-9295-B98F54EE0D4D}</Project>
-      <Name>scene</Name>
+      <Name>engine.scene</Name>
     </ProjectReference>
-    <ProjectReference Include="..\simple3D\simple3D.csproj">
+    <ProjectReference Include="..\simple3D\test.simple3D.csproj">
       <Project>{4A189610-2B9F-45F1-A929-1F89EF88CA09}</Project>
-      <Name>simple3D</Name>
+      <Name>test.simple3D</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

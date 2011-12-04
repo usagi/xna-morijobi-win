@@ -85,21 +85,25 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\input\input.csproj">
+    <ProjectReference Include="..\..\input\engine.input.csproj">
       <Project>{D599407F-A54D-477A-A4D0-284F8F5A40DA}</Project>
-      <Name>input</Name>
+      <Name>engine.input</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\my_space\my_space.csproj">
+    <ProjectReference Include="..\..\my_space\scene.my_space.csproj">
       <Project>{DBC78150-BEE1-4DC0-B102-EFF01775F740}</Project>
-      <Name>my_space</Name>
+      <Name>scene.my_space</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\scene\scene.csproj">
+    <ProjectReference Include="..\..\rpg\scene.rpg.csproj">
+      <Project>{63D739B4-5E5C-4282-8E54-313A7886425E}</Project>
+      <Name>scene.rpg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\scene\engine.scene.csproj">
       <Project>{82B196C5-0678-4131-9295-B98F54EE0D4D}</Project>
-      <Name>scene</Name>
+      <Name>engine.scene</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\simple3D\simple3D.csproj">
+    <ProjectReference Include="..\..\simple3D\test.simple3D.csproj">
       <Project>{4A189610-2B9F-45F1-A929-1F89EF88CA09}</Project>
-      <Name>simple3D</Name>
+      <Name>test.simple3D</Name>
     </ProjectReference>
     <ProjectReference Include="..\xna-morijobi-winContent\xna-morijobi-winContent.contentproj">
       <Project>{48A06FBF-90DA-4446-AC23-9E0230C2E331}</Project>

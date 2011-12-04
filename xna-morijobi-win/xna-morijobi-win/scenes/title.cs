@@ -67,7 +67,7 @@ namespace xna_morijobi_win.scenes
             else if (input_manager.is_key_down_begin(Keys.X))
             {
                 se_enter.Play();
-                //scene_manager.push(new rpg.test(Game));
+                scene_manager.push(new rpg.test(Game));
             }
         }
     }

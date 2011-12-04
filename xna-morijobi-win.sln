@@ -5,17 +5,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xna-morijobi-win", "xna-mor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xna-morijobi-winContent", "xna-morijobi-win\xna-morijobi-winContent\xna-morijobi-winContent.contentproj", "{48A06FBF-90DA-4446-AC23-9E0230C2E331}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simple3D", "simple3D\simple3D.csproj", "{4A189610-2B9F-45F1-A929-1F89EF88CA09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.simple3D", "simple3D\test.simple3D.csproj", "{4A189610-2B9F-45F1-A929-1F89EF88CA09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuSkinningDataTypes (Windows)", "CpuSkinningDataTypes\CpuSkinningDataTypes (Windows).csproj", "{73AEAD46-79FA-4C9C-B8A9-0317AB2AA385}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuSkinningPipelineExtensions", "CpuSkinningPipelineExtensions\CpuSkinningPipelineExtensions.csproj", "{C74E3173-73C2-4357-87E2-E433D279A948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scene", "scene\scene.csproj", "{82B196C5-0678-4131-9295-B98F54EE0D4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engine.scene", "scene\engine.scene.csproj", "{82B196C5-0678-4131-9295-B98F54EE0D4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "my_space", "my_space\my_space.csproj", "{DBC78150-BEE1-4DC0-B102-EFF01775F740}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scene.my_space", "my_space\scene.my_space.csproj", "{DBC78150-BEE1-4DC0-B102-EFF01775F740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "input", "input\input.csproj", "{D599407F-A54D-477A-A4D0-284F8F5A40DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engine.input", "input\engine.input.csproj", "{D599407F-A54D-477A-A4D0-284F8F5A40DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scene.rpg", "rpg\scene.rpg.csproj", "{63D739B4-5E5C-4282-8E54-313A7886425E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{D599407F-A54D-477A-A4D0-284F8F5A40DA}.Debug|x86.Build.0 = Debug|x86
 		{D599407F-A54D-477A-A4D0-284F8F5A40DA}.Release|x86.ActiveCfg = Release|x86
 		{D599407F-A54D-477A-A4D0-284F8F5A40DA}.Release|x86.Build.0 = Release|x86
+		{63D739B4-5E5C-4282-8E54-313A7886425E}.Debug|x86.ActiveCfg = Debug|x86
+		{63D739B4-5E5C-4282-8E54-313A7886425E}.Debug|x86.Build.0 = Debug|x86
+		{63D739B4-5E5C-4282-8E54-313A7886425E}.Release|x86.ActiveCfg = Release|x86
+		{63D739B4-5E5C-4282-8E54-313A7886425E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
