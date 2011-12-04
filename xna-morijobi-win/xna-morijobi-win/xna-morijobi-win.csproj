@@ -72,8 +72,11 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="scenes\title.cs" />
+    <Compile Include="scenes\blanding.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -82,12 +85,25 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\input\input.csproj">
+      <Project>{D599407F-A54D-477A-A4D0-284F8F5A40DA}</Project>
+      <Name>input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\my_space\my_space.csproj">
+      <Project>{DBC78150-BEE1-4DC0-B102-EFF01775F740}</Project>
+      <Name>my_space</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\scene\scene.csproj">
+      <Project>{82B196C5-0678-4131-9295-B98F54EE0D4D}</Project>
+      <Name>scene</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\simple3D\simple3D.csproj">
       <Project>{4A189610-2B9F-45F1-A929-1F89EF88CA09}</Project>
       <Name>simple3D</Name>
     </ProjectReference>
     <ProjectReference Include="..\xna-morijobi-winContent\xna-morijobi-winContent.contentproj">
-      <Name>xna_morijobi_winContent</Name>
+      <Project>{48A06FBF-90DA-4446-AC23-9E0230C2E331}</Project>
+      <Name>xna-morijobi-winContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>

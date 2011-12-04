@@ -44,7 +44,7 @@ namespace xna_morijobi_win.simple3D
                 //new game_objects.camera(this)
                 new game_objects.polar_camera(this)
             );
-            Components.Add(new game_objects.axes(this));
+            Components.Add(new game_objects.axes(this, camera));
             Components.Add(new game_objects.cat(this));
             Components.Add(new game_objects.wankuma(this));
             Components.Add(new game_objects.n175Anim(this));

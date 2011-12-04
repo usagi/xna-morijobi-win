@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace xna_morijobi_win.simple3D
 {
-    abstract class game_object: DrawableGameComponent
+    public abstract class game_object: DrawableGameComponent
     {
         protected game_objects.camera camera { get { return (Game as game).camera; } }
 

@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace xna_morijobi_win.simple3D.game_objects
 {
-    class axes : DrawableGameComponent
+    public class axes : DrawableGameComponent
     {
         protected VertexBuffer vertex_buffer;
         public Effect effect { get; protected set; }
-        protected camera camera { get { return (Game as game).camera; } }
+        protected camera camera { get; set; }
 
-        public axes(Game game)
+        public axes(Game game, camera camera)
             : base(game)
-        { }
+        { this.camera = camera; }
 
         public override void Initialize()
         {

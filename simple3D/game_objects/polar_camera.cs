@@ -9,9 +9,9 @@ namespace xna_morijobi_win.simple3D.game_objects
 {
     public class polar_camera : camera
     {
-        public virtual float theta { get; protected set; }
-        public virtual float phi { get; protected set; }
-        public virtual float distance { get; protected set; }
+        public virtual float theta { get; set; }
+        public virtual float phi { get; set; }
+        public virtual float distance { get; set; }
 
         public new Vector3 target
         {
@@ -57,25 +57,6 @@ namespace xna_morijobi_win.simple3D.game_objects
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            var t = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            var d1 = t * 0.5f;           
-            if (keyboard_state.IsKeyDown(Keys.Left))
-                theta += d1;
-            if (keyboard_state.IsKeyDown(Keys.Right))
-                theta -= d1;
-            if (keyboard_state.IsKeyDown(Keys.Up))
-                phi += d1;
-            if (keyboard_state.IsKeyDown(Keys.Down))
-                phi -= d1;
-
-            var d2 = t * 100.0f;
-            if (keyboard_state.IsKeyDown(Keys.PageUp))
-                distance += d2;
-            if (keyboard_state.IsKeyDown(Keys.PageDown))
-                distance -= d2;
-
             update_position_with_polar_params();
         }
     }

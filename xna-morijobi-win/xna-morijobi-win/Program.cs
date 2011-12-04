@@ -7,7 +7,7 @@ namespace xna_morijobi_win
     {
         static void Main()
         {
-            using (var g = new simple3D.game())
+            using (var g = new game())
                 g.Run();
         }
     }
