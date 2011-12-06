@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engine.input", "input\engin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scene.rpg", "rpg\scene.rpg.csproj", "{63D739B4-5E5C-4282-8E54-313A7886425E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engine.diagnostics", "engine.diagnostics\engine.diagnostics.csproj", "{742364BB-1D05-424F-BCB3-1344C32CCCF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -59,6 +61,10 @@ Global
 		{63D739B4-5E5C-4282-8E54-313A7886425E}.Debug|x86.Build.0 = Debug|x86
 		{63D739B4-5E5C-4282-8E54-313A7886425E}.Release|x86.ActiveCfg = Release|x86
 		{63D739B4-5E5C-4282-8E54-313A7886425E}.Release|x86.Build.0 = Release|x86
+		{742364BB-1D05-424F-BCB3-1344C32CCCF7}.Debug|x86.ActiveCfg = Debug|x86
+		{742364BB-1D05-424F-BCB3-1344C32CCCF7}.Debug|x86.Build.0 = Debug|x86
+		{742364BB-1D05-424F-BCB3-1344C32CCCF7}.Release|x86.ActiveCfg = Release|x86
+		{742364BB-1D05-424F-BCB3-1344C32CCCF7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
