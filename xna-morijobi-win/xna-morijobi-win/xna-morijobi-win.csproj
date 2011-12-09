@@ -85,6 +85,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\engine.diagnostics\engine.diagnostics.csproj">
+      <Project>{742364BB-1D05-424F-BCB3-1344C32CCCF7}</Project>
+      <Name>engine.diagnostics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\input\engine.input.csproj">
       <Project>{D599407F-A54D-477A-A4D0-284F8F5A40DA}</Project>
       <Name>engine.input</Name>

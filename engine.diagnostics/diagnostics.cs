@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 namespace xna_morijobi_win.diagnostics
 {
     public abstract class diagnostics
-        : idiagnostics, IUpdateable
+        : idiagnostics, IUpdateable, IGameComponent
     {
         public diagnostics(Game g)
         {
@@ -21,7 +21,7 @@ namespace xna_morijobi_win.diagnostics
             UpdateOrder = int.MaxValue - 1;
         }
 
-        public readonly Game game;
+        protected readonly Game game;
 
         public override string ToString()
         {
@@ -39,5 +39,7 @@ namespace xna_morijobi_win.diagnostics
         public int UpdateOrder { get; set; }
 
         public event EventHandler<EventArgs> UpdateOrderChanged;
+
+        public void Initialize() { }
     }
 }

@@ -41,6 +41,7 @@ namespace xna_morijobi_win.diagnostics
             base.Initialize();
             sprite_batch = new SpriteBatch(Game.GraphicsDevice);
             font = Game.Content.Load<SpriteFont>(@"fonts\default");
+            background = new Texture2D(GraphicsDevice, 1, 1);
             background.SetData(new Color[] { background_color });
         }
 
@@ -54,7 +55,7 @@ namespace xna_morijobi_win.diagnostics
             base.Draw(gameTime);
             sprite_batch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
             sprite_batch.Draw(background, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
-            sprite_batch.DrawString(font,ToString(), position, foreground_color);
+            sprite_batch.DrawString(font, ToString(), position, foreground_color);
             sprite_batch.End();
         }
 
