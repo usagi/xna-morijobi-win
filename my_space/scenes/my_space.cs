@@ -31,7 +31,7 @@ namespace xna_morijobi_win.my_space
             components.Add(new simple3D.game_objects.axes(Game, camera));
 
             var r = new Random();
-            for (var n = 100; n > 0; --n)
+            for (var n = 16; n > 0; --n)
                 components.Add(new star(Game, camera, r));
 
             base.Initialize();
@@ -54,6 +54,30 @@ namespace xna_morijobi_win.my_space
             camera_update(gameTime);
 
             base.Update(gameTime);
+
+            collisions();
+        }
+
+        protected void collisions()
+        {
+            var ss = new List<star>(find_scene_components<star>());
+            var c = ss.Count;
+            var removes = new Queue<star>();
+            Parallel.For(0, c, ia =>
+            {
+                for (var ib = ia + 1; ib < c; ++ib){
+                    var a = ss[ia];
+                    var b = ss[ib];
+                    if (a.bounding.Intersects(b.bounding))
+                    {
+                        removes.Enqueue((a.mass > b.mass) ? b : a);
+                        se_collision.Play();
+                    }
+                }
+            });
+
+            foreach (var s in removes)
+                components.Remove(s);
         }
 
         protected void update_stars_gravity(GameTime gameTime)

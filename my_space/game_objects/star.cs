@@ -25,6 +25,8 @@ namespace xna_morijobi_win.my_space
 
         protected readonly simple3D.game_objects.polar_camera camera;
 
+        public BoundingSphere bounding = new BoundingSphere();
+
         public star(Game game, simple3D.game_objects.polar_camera camera)
             : base(game)
         {
@@ -51,10 +53,13 @@ namespace xna_morijobi_win.my_space
             model = Game.Content.Load<Model>(@"misc\cat");
 
             foreach (var m in model.Meshes)
+            {
+                BoundingSphere.CreateMerged(bounding, m.BoundingSphere);
                 foreach (var e in m.Effects)
                     (e as BasicEffect).EnableDefaultLighting();
+            }
 
-            scaling_ *= mass / const_e;
+            scaling_ *= bounding.Radius = mass / const_e;
         }
 
         public void effect_from(star t)
@@ -68,7 +73,10 @@ namespace xna_morijobi_win.my_space
         public override void Update(GameTime gameTime)
         {
             position_velocity_ += position_acceleration_ * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             base.Update(gameTime);
+
+            bounding.Center = position_;
 
             if (Math.Abs(position_.X) > 1000.0f)
                 position_.X = -position_.X;

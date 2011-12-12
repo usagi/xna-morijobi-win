@@ -30,16 +30,16 @@ namespace xna_morijobi_win.diagnostics
 
         public virtual string message { get; protected set; }
 
-        public bool Enabled { get; set; }
+        public virtual bool Enabled { get; set; }
 
         public event EventHandler<EventArgs> EnabledChanged;
 
-        public void Update(GameTime gameTime) { }
+        public virtual void Update(GameTime gameTime) { }
 
-        public int UpdateOrder { get; set; }
+        public virtual int UpdateOrder { get; set; }
 
         public event EventHandler<EventArgs> UpdateOrderChanged;
 
-        public void Initialize() { }
+        public virtual void Initialize() { }
     }
 }
