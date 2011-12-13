@@ -1,4 +1,4 @@
-//#define DIAGNOSTICS
+#define DIAGNOSTICS
 
 using System;
 using System.Collections.Generic;
@@ -31,7 +31,6 @@ namespace xna_morijobi_win
             input_manager = new input.input_manager(this);
 #if DIAGNOSTICS
             diagnostics_manager = new diagnostics.diagnostics_manager(this);
-            diagnostics_manager.Initialize();
 #endif
             Content.RootDirectory = "Content";
             reset_game_settings();
@@ -39,8 +38,8 @@ namespace xna_morijobi_win
         
         protected override void Initialize()
         {
-            base.Initialize();
             reset_components();
+            base.Initialize();
             initialize_scenes();
         }
 

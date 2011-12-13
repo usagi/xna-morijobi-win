@@ -63,6 +63,7 @@ namespace xna_morijobi_win.my_space
             var ss = new List<star>(find_scene_components<star>());
             var c = ss.Count;
             var removes = new Queue<star>();
+            // for(var ia = 0; ia < c; ++ia)
             Parallel.For(0, c, ia =>
             {
                 for (var ib = ia + 1; ib < c; ++ib){
@@ -70,6 +71,10 @@ namespace xna_morijobi_win.my_space
                     var b = ss[ib];
                     if (a.bounding.Intersects(b.bounding))
                     {
+                        //if (a.mass > b.mass)
+                        //    removes.Enqueue(b);
+                        //else
+                        //    removes.Enqueue(a);
                         removes.Enqueue((a.mass > b.mass) ? b : a);
                         se_collision.Play();
                     }

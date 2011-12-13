@@ -96,7 +96,7 @@ namespace xna_morijobi_win.diagnostics
         {
             message = string.Join(
                 Environment.NewLine,
-                (from key in times.Keys select key + " : " + this[key] + " [sec.]").ToArray()
+                (from key in times.Keys select key + " : " + string.Format("{0:f4}" ,this[key] * 1000) + " [ms]").ToArray()
             );
         }
     }

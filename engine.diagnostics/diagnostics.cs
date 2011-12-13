@@ -25,7 +25,7 @@ namespace xna_morijobi_win.diagnostics
 
         public override string ToString()
         {
-            return "<" + this + ">" + Environment.NewLine + message + Environment.NewLine;
+            return "<" + this.GetType().Name + ">" + Environment.NewLine + message + Environment.NewLine;
         }
 
         public virtual string message { get; protected set; }

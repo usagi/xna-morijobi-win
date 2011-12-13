@@ -48,12 +48,14 @@ namespace xna_morijobi_win.diagnostics
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            foreach (var c in components)
+                ((IUpdateable)c).Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-            sprite_batch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
+            sprite_batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             sprite_batch.Draw(background, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
             sprite_batch.DrawString(font, ToString(), position, foreground_color);
             sprite_batch.End();

@@ -39,7 +39,7 @@ namespace xna_morijobi_win.scenes
         {
             base.resume();
             elapsed_time = TimeSpan.Zero;
-            MediaPlayer.Play(bgm);
+            //MediaPlayer.Play(bgm);
             MediaPlayer.IsRepeating = true;
         }
 

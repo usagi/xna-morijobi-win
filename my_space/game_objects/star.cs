@@ -54,12 +54,14 @@ namespace xna_morijobi_win.my_space
 
             foreach (var m in model.Meshes)
             {
-                BoundingSphere.CreateMerged(bounding, m.BoundingSphere);
+                bounding = BoundingSphere.CreateMerged(bounding, m.BoundingSphere);
                 foreach (var e in m.Effects)
                     (e as BasicEffect).EnableDefaultLighting();
             }
 
-            scaling_ *= bounding.Radius = mass / const_e;
+            var scaling_factor = mass / const_e;
+            bounding.Radius *= scaling_factor;
+            scaling_ *= scaling_factor;
         }
 
         public void effect_from(star t)
