@@ -93,8 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="game_objects\map_block.cs" />
+    <Compile Include="game_objects\base_plane.cs" />
+    <Compile Include="icollision.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scenes\test.cs" />
+    <Compile Include="collision.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\input\engine.input.csproj">

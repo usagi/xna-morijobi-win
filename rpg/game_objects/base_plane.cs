@@ -12,14 +12,14 @@ using Microsoft.Xna.Framework.Media;
 
 namespace xna_morijobi_win.rpg
 {
-    public class base_plane
+    public class map_block
         : simple3D.game_object
     {
         public const float height = 0.1f;
         public const float floor_length = 1.0f;
         protected readonly simple3D.game_objects.polar_camera camera;
 
-        public base_plane(Game game, simple3D.game_objects.polar_camera camera)
+        public map_block(Game game, simple3D.game_objects.polar_camera camera, Vector3 position)
             : base(game)
         {
             Debug.Assert(camera != null);
