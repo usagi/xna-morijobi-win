@@ -12,19 +12,25 @@ using Microsoft.Xna.Framework.Media;
 
 namespace xna_morijobi_win.rpg
 {
-    public class base_plane
-        : simple3D.game_object
+    public class map_block
+        : simple3D.game_object, icollision
     {
         public const float height = 0.1f;
         public const float floor_length = 1.0f;
         protected readonly simple3D.game_objects.polar_camera camera;
 
-        public base_plane(Game game, simple3D.game_objects.polar_camera camera)
+        protected BoundingBox bounding_ = new BoundingBox();
+        public BoundingBox bounding_box { get { return bounding_; } }
+        protected readonly Vector3 bounding_unit = new Vector3(floor_length, height, floor_length);
+
+        public map_block(Game game, simple3D.game_objects.polar_camera camera, Vector3 position)
             : base(game)
         {
             Debug.Assert(camera != null);
             this.camera = camera;
             position_ = position;
+            position_velocity_ = -Vector3.UnitY * height;
+            update_bounding();
         }
 
         public override void Initialize()
@@ -54,12 +60,56 @@ namespace xna_morijobi_win.rpg
             base.Draw(gameTime);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            update_bounding();
+        }
+
         protected void sync_effect_matrices(Effect e)
         {
             var e_ = e as BasicEffect;
             e_.View = camera.view;
             e_.Projection = camera.projection;
             e_.World = world;
+        }
+
+        public object bounding
+        { get { return bounding_; } }
+
+        protected void update_bounding()
+        {
+            bounding_.Min = -bounding_unit + position_;
+            bounding_.Max = bounding_unit + position_;
+        }
+
+        public void collide_against(icollision target)
+        {
+            if (target.GetType().GetNestedTypes().Any(t => t == typeof(base_plane)))
+                collide_against_plane((base_plane)target);
+            else if (target.GetType().GetNestedTypes().Any(t => t == typeof(map_block)))
+                collide_against_map_block((map_block)target);
+        }
+
+        protected void collide_against_plane(base_plane target)
+        {
+            var target_normal = target.plane.Normal;
+            var target_position = target_normal * target.plane.D;
+            var margin_factor = 1.01f;
+            position_ += target_normal * (Vector3.Distance(position_, target_position) * margin_factor);
+            update_bounding();
+        }
+
+        protected void collide_against_map_block(map_block target)
+        {
+            if (position.Y < target.position.Y)
+                return;
+
+            var direction = Vector3.Normalize(target.position - position_);
+            var distance = Vector3.Distance(position_, target.position);
+            var margin_factor = 1.01f;
+            position_ += direction * (distance * margin_factor);
+            update_bounding();
         }
     }
 }

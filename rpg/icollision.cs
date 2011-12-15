@@ -14,7 +14,7 @@ namespace xna_morijobi_win.rpg
 {
     public interface icollision
     {
-        BoundingSphere bounding { get; }
+        object bounding { get; }
         void collide_against(icollision target);
     }
 }

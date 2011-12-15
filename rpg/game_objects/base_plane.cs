@@ -12,54 +12,25 @@ using Microsoft.Xna.Framework.Media;
 
 namespace xna_morijobi_win.rpg
 {
-    public class map_block
-        : simple3D.game_object
+    public class base_plane
+        : simple3D.game_object, icollision
     {
-        public const float height = 0.1f;
-        public const float floor_length = 1.0f;
         protected readonly simple3D.game_objects.polar_camera camera;
+        protected Plane bounding_ = new Plane(Vector3.UnitY, 0f);
+        public Plane plane { get { return bounding_; } }
 
-        public map_block(Game game, simple3D.game_objects.polar_camera camera, Vector3 position)
+        public base_plane(Game game, simple3D.game_objects.polar_camera camera)
             : base(game)
         {
             Debug.Assert(camera != null);
             this.camera = camera;
-            position_ = position;
         }
 
-        public override void Initialize()
+        public object bounding
+        { get { return bounding_; } }
+
+        public void collide_against(icollision target)
         {
-            base.Initialize();
-
-            model = Game.Content.Load<Model>(@"misc\box");
-
-            foreach (var m in model.Meshes)
-                foreach (var e in m.Effects)
-                    (e as BasicEffect).EnableDefaultLighting();
-
-            scaling_.Y = height;
-            scaling_.X = scaling_.Z = floor_length;
-            scaling_ *= 0.5f;
-        }
-
-        public override void Draw(GameTime gameTime)
-        {
-            foreach (var m in model.Meshes)
-                foreach (var e in m.Effects)
-                {
-                    sync_effect_matrices(e);
-                    m.Draw();
-                }
-
-            base.Draw(gameTime);
-        }
-
-        protected void sync_effect_matrices(Effect e)
-        {
-            var e_ = e as BasicEffect;
-            e_.View = camera.view;
-            e_.Projection = camera.projection;
-            e_.World = world;
         }
     }
 }

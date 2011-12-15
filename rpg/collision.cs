@@ -16,21 +16,52 @@ namespace xna_morijobi_win.rpg
     public abstract class collision
         : icollision
     {
-        public virtual BoundingSphere bounding
-        { get; protected set; }
+        protected object bounding_ = null;
+
+        public object bounding
+        {
+            get { return bounding_; }
+            protected set
+            {
+                var t = value.GetType();
+                Debug.Assert(
+                    t == typeof(BoundingBox) ||
+                    t == typeof(BoundingSphere) ||
+                    t == typeof(BoundingFrustum) ||
+                    t == typeof(Plane) ||
+                    t == typeof(Ray)
+                    , "bounding set ‚É –³Œø‚ÈŒ^‚ª‘ã“ü‚³‚ê‚½‰Â”\«‚ª‚ ‚è‚Ü‚·B"
+                );
+                bounding_ = value;
+            }
+        }
 
         public virtual void collide_against(icollision target)
         { }
 
         static public void collisions(icollision a, icollision b)
         {
-            if (a.bounding.Intersects(b.bounding))
+            dynamic ba = a.bounding;
+            dynamic bb = b.bounding;
+
+            try
             {
-                Parallel.Invoke(
-                    () => a.collide_against(b),
-                    () => b.collide_against(a)
+                if (ba.Intersects(bb))
+                {
+                    a.collide_against(b);
+                    b.collide_against(a);
+                }
+            }
+            catch (MissingMethodException e)
+            {
+                Debug.Assert(
+                    (ba.GetType() == typeof(Plane) && bb.GetType() == typeof(Plane)) ||
+                    (ba.GetType() == typeof(Plane) && bb.GetType() == typeof(Ray)) ||
+                    (ba.GetType() == typeof(Ray) && bb.GetType() == typeof(Ray))
+                    , e.Message
                 );
             }
         }
+
     }
 }
