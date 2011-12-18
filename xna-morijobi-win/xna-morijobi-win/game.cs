@@ -64,8 +64,12 @@ namespace xna_morijobi_win
         protected void initialize_scenes()
         {
             scene_manager.push(new scene.scene[] {
+#if DEBUG
+                new rpg.test(this),    
+#else
                 new scenes.title(this),
                 new scenes.blanding(this),
+#endif
             });
         }
 

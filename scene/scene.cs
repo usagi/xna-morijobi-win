@@ -21,6 +21,9 @@ namespace xna_morijobi_win.scene
         public scene_manager scene_manager { get; protected set; }
         public input.input_manager input_manager { get; protected set; }
 
+        protected event Action<GameTime> on_update_first = t => { };
+        protected event Action<GameTime> on_update_last = t => { };
+
         public scene(Game g)
             : base(g)
         { 
@@ -62,10 +65,16 @@ namespace xna_morijobi_win.scene
 
         public override void Update(GameTime gameTime)
         {
+            on_update_first(gameTime);
+            update_components(gameTime);
+            base.Update(gameTime);
+            on_update_last(gameTime);
+        }
+
+        protected virtual void update_components(GameTime gameTime)
+        {
             foreach (var updatable in enumerate_from_components<IUpdateable>())
                 updatable.Update(gameTime);
-
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)

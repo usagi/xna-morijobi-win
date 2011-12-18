@@ -41,16 +41,22 @@ namespace xna_morijobi_win.rpg
 
         static public void collisions(icollision a, icollision b)
         {
+            if (collisions_test(a, b))
+            {
+                a.collide_against(b);
+                b.collide_against(a);
+            }
+        }
+
+        static public bool collisions_test(icollision a, icollision b)
+        {
             dynamic ba = a.bounding;
             dynamic bb = b.bounding;
-
             try
             {
-                if (ba.Intersects(bb))
-                {
-                    a.collide_against(b);
-                    b.collide_against(a);
-                }
+                return (ba.GetType() == typeof(Plane) || bb.GetType() == typeof(Plane))
+                    ? ba.Intersects(bb) != PlaneIntersectionType.Front
+                    : ba.Intersects(bb);
             }
             catch (MissingMethodException e)
             {
@@ -61,7 +67,7 @@ namespace xna_morijobi_win.rpg
                     , e.Message
                 );
             }
+            return false;
         }
-
     }
 }

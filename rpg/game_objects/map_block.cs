@@ -15,21 +15,34 @@ namespace xna_morijobi_win.rpg
     public class map_block
         : simple3D.game_object, icollision
     {
-        public const float height = 0.1f;
+        public new Vector3 position {
+            get { return position_; }
+            set { position_ = value; }
+        }
+        public float height {
+            get { return height_; }
+            set
+            {
+                height_ = value;
+                scaling_.Y = value * 0.5f;
+                bounding_unit = new Vector3(floor_length, height_ * 0.5f, floor_length);
+                update_bounding();
+            }
+        }
+        protected float height_ = 1.0f;
         public const float floor_length = 1.0f;
         protected readonly simple3D.game_objects.polar_camera camera;
-
         protected BoundingBox bounding_ = new BoundingBox();
         public BoundingBox bounding_box { get { return bounding_; } }
-        protected readonly Vector3 bounding_unit = new Vector3(floor_length, height, floor_length);
+        protected Vector3 bounding_unit;
 
-        public map_block(Game game, simple3D.game_objects.polar_camera camera, Vector3 position)
+        public map_block(Game game, simple3D.game_objects.polar_camera camera)
             : base(game)
         {
             Debug.Assert(camera != null);
             this.camera = camera;
-            position_ = position;
-            position_velocity_ = -Vector3.UnitY * height;
+            position_velocity_ = -Vector3.UnitY * height * 10;
+            bounding_unit = new Vector3(floor_length, height_, floor_length);
             update_bounding();
         }
 
@@ -85,18 +98,18 @@ namespace xna_morijobi_win.rpg
 
         public void collide_against(icollision target)
         {
-            if (target.GetType().GetNestedTypes().Any(t => t == typeof(base_plane)))
+            var target_types = target.GetType().GetNestedTypes().Union(new Type[] { target.GetType() });
+            if (target_types.Any(t => t == typeof(base_plane)))
                 collide_against_plane((base_plane)target);
-            else if (target.GetType().GetNestedTypes().Any(t => t == typeof(map_block)))
-                collide_against_map_block((map_block)target);
+            //else if (target_types.Any(t => t == typeof(map_block)))
+            //    collide_against_map_block((map_block)target);
         }
 
         protected void collide_against_plane(base_plane target)
         {
             var target_normal = target.plane.Normal;
             var target_position = target_normal * target.plane.D;
-            var margin_factor = 1.01f;
-            position_ += target_normal * (Vector3.Distance(position_, target_position) * margin_factor);
+            position_.Y = target_position.Y + height_ * 0.5f;
             update_bounding();
         }
 

@@ -38,12 +38,12 @@ namespace xna_morijobi_win.rpg
             map_image_data = new Color[map_image.Width * map_image.Height];
             map_image.GetData(map_image_data);
             Debug.Assert(map_image_data.Count() > 0);
-            map_block_loader_params_.h = map_image_data[0].R;
             components.Add(new base_plane(Game, camera));
 
-            on_update += generate_map_block;
-            on_update += check_exit;
-            on_update += camera_update;
+            on_update_first += generate_map_block;
+            on_update_first += check_exit;
+            on_update_first += camera_update;
+            on_update_last += collisions;
 
             base.Initialize();
         }
@@ -55,13 +55,14 @@ namespace xna_morijobi_win.rpg
             base.Draw(gameTime);
         }
 
-        public override void Update(GameTime gameTime)
+        protected void collisions(GameTime gameTime)
         {
-            on_update.Invoke(gameTime);
-            base.Update(gameTime);
+            var cs = find_scene_components<icollision>().ToList();
+            var csc = cs.Count;
+            for (var na = 0; na < csc; ++na)
+                for (var nb = na + 1; nb < csc; ++nb)
+                    collision.collisions(cs[na], cs[nb]);
         }
-
-        protected event Action<GameTime> on_update;
 
         protected void check_exit(GameTime gameTime)
         {
@@ -69,45 +70,39 @@ namespace xna_morijobi_win.rpg
                 scene_manager.pop();
         }
 
-        protected struct map_block_loader_params { public int x, z; public byte h; }
+        protected struct map_block_loader_params
+        {
+            public int x, z;
+            public float h;
+            public double time;
+        }
         protected map_block_loader_params map_block_loader_params_;
         protected void generate_map_block(GameTime gameTime)
         {
-            while (map_block_loader_params_.h == 0)
+            if ((map_block_loader_params_.time += gameTime.ElapsedGameTime.TotalSeconds) < 0.05)
+                return;
+            map_block_loader_params_.time = 0;
+
+            map_block_loader_params_.h = map_image_data[map_block_loader_params_.z * map_image.Width + map_block_loader_params_.x].R * 0.025f;
+
+            var p = new Vector3(map_block.floor_length * (float)map_block_loader_params_.x, 20, map_block.floor_length * -(float)map_block_loader_params_.z) { };
+            Debug.WriteLine("new block; position = " + p);
+            var c = new map_block(Game, camera) { position = p, height = map_block_loader_params_.h };
+            c.Initialize();
+            components.Add(c);
+
+            ++map_block_loader_params_.x;
+
+            if (map_block_loader_params_.x >= map_image.Width)
             {
-                ++map_block_loader_params_.x;
-
-                if (map_block_loader_params_.x >= map_image.Width)
-                {
-                    ++map_block_loader_params_.z;
-                    map_block_loader_params_.x = 0;
-                }
-
+                ++map_block_loader_params_.z;
+                map_block_loader_params_.x = 0;
                 if (map_block_loader_params_.z >= map_image.Height)
                 {
-                    on_update -= generate_map_block;
+                    on_update_first -= generate_map_block;
                     return;
                 }
-
-                map_block_loader_params_.h = map_image_data[map_block_loader_params_.z * map_image.Width + map_block_loader_params_.x].R;
             }
-
-            components.Add(new map_block(Game, camera, new Vector3(map_block.floor_length * (float)map_block_loader_params_.x, 100f, map_block.floor_length * -(float)map_block_loader_params_.z)));
-
-            --map_block_loader_params_.h;
-
-            /*
-            for (var z = 0; z < map_image.Height; ++z)
-            {
-                var z_ = z * map_image.Width;
-                for (var x = 0; x < map_image.Width; ++x)
-                {
-                    var h = map_image_data[z_ + x].R;
-                    for (var n = 0; n < h; ++n)
-                        components.Add(new map_block(Game, camera, new Vector3(map_block.floor_length * (float)x, map_block.height * n, map_block.floor_length * -(float)z)));
-                }
-            }
-            */
         }
 
         protected void camera_update(GameTime gameTime)
